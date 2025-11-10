@@ -124,3 +124,14 @@ AUTH_USER_MODEL = 'usuarios.Usuario'
 LOGIN_URL = '/usuarios/login/'
 LOGIN_REDIRECT_URL = '/noticias/'
 LOGOUT_REDIRECT_URL = '/usuarios/login/'
+
+
+# Archivos estáticos (CSS, JS, imágenes)
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # <- importante
+
+# WhiteNoise para servir estáticos en producción
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
+# Opcional: para compresión y cacheo de archivos estáticos
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
