@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import dj_database_url
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-(k$jjv(8%iypw5b*ro@$rjg3!dquo=&ug-1m&y_y3i7pq9&+w+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['periodico-ijfk.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -76,9 +77,13 @@ WSGI_APPLICATION = 'periodico.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
+
 DATABASES = {
-    'default': dj_database_url.parse(
-        'postgresql://santiago:JuuPPoYmEVwhsnZVrQHZOyO3Oqq9sJ5E@dpg-d48g84m3jp1c73ciqfe0-a.oregon-postgres.render.com:5432/periodico',
+    'default': dj_database_url.config(
+        default=os.getenv(
+            'DATABASE_URL',
+            'sqlite:///db.sqlite3'  # fallback para entorno local
+        ),
         conn_max_age=600,
         ssl_require=True
     )
