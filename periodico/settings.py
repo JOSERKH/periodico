@@ -7,6 +7,13 @@ Generado por 'django-admin startproject' usando Django 5.2.8.
 from pathlib import Path
 import dj_database_url
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from dotenv import load_dotenv
+
+# === Cargar variables de entorno ===
+load_dotenv()
 
 # === BASE DIR ===
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +36,10 @@ INSTALLED_APPS = [
     # Tus apps
     'usuarios',
     'noticias',
+
+    # Cloudinary
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 # === MIDDLEWARE ===
@@ -95,6 +106,20 @@ STATICFILES_DIRS = [
 
 # WhiteNoise: compresión y caché
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# === CLOUDINARY CONFIG ===
+cloudinary.config( 
+    cloud_name = os.getenv('CLOUD_NAME', 'daw6smyx6'),
+    api_key = os.getenv('CLOUDINARY_API_KEY', '758998895797148'),
+    api_secret = os.getenv('CLOUDINARY_API_SECRET', 'vUWXJUoVuKaxJZwPLOm12_tmXuU')
+)
+
+# Usar Cloudinary como almacenamiento de archivos por defecto
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# === MEDIA ===
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # === USUARIO PERSONALIZADO ===
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
