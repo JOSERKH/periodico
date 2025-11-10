@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="{% static 'css/usuario.css' %}">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="formulario">
+            <h2>Iniciar Sesión</h2>
+
+            <!-- 🔹 Muestra mensajes de Django -->
+            {% if messages %}
+                <div class="mensajes">
+                    {% for message in messages %}
+                        <p class="{{ message.tags }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form id="loginForm" method="POST">
+                {% csrf_token %}
+                <div class="campo">
+                    <label for="email">Correo</label>
+                    <input type="email" id="email" name="username" required>
+                </div>
+                <div class="campo">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Entrar</button>
+                <p class="mensaje">¿No tienes cuenta?
+                    <a href="{% url 'registro' %}">Regístrate</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'js/usuario.js' %}"></script>
+</body>
+</html>

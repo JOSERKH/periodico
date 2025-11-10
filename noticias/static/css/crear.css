@@ -1,0 +1,101 @@
+body {
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #007bff;
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+#previewContainer {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#previewImage {
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.btn {
+    background: #007bff;
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+.btn-cancelar {
+    background: #6c757d;
+    margin-left: 10px;
+}
+
+.btn-cancelar:hover {
+    background: #5a6268;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    #previewImage {
+        width: 100%;
+    }
+}

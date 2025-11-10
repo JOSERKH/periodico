@@ -1,0 +1,90 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header .acciones {
+    display: flex;
+    gap: 10px;
+}
+
+header .btn {
+    color: white;
+    text-decoration: none;
+    background: #3498db;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+header .btn:hover {
+    background: #2980b9;
+}
+
+header .cerrar {
+    background: #e74c3c;
+}
+
+header .cerrar:hover {
+    background: #c0392b;
+}
+
+.contenedor-noticias {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    height: 80vh;
+    padding: 20px;
+}
+
+.noticia {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+}
+
+.noticia:last-child {
+    border-bottom: none;
+}
+
+.noticia h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.noticia p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.noticia img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.sin-noticias {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}

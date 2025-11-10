@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Noticias - Panel</title>
+    <link rel="stylesheet" href="{% static 'css/noticias.css' %}">
+</head>
+<body>
+    <header>
+        <h1>📰 Noticias Recientes</h1>
+        <div class="acciones">
+            <a href="{% url 'crear_noticia' %}" class="btn">➕ Nueva Noticia</a>
+            <a href="{% url 'cerrar_sesion' %}" class="btn cerrar">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <div class="contenedor-noticias" id="listaNoticias">
+        {% for noticia in noticias %}
+            <div class="noticia">
+                <h2>{{ noticia.titulo }}</h2>
+                <p>{{ noticia.contenido|truncatewords:40 }}</p>
+                {% if noticia.imagen %}
+                    <img src="{{ noticia.imagen.url }}" alt="{{ noticia.titulo }}">
+                {% endif %}
+            </div>
+        {% empty %}
+            <p class="sin-noticias">No hay noticias disponibles aún.</p>
+        {% endfor %}
+    </div>
+
+    <script src="{% static 'js/noticias.js' %}"></script>
+</body>
+</html>
