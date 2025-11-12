@@ -8,15 +8,15 @@ def lista_noticias(request):
     noticias = Noticia.objects.all().order_by('-fecha_publicacion')
     return render(request, 'noticias/lista_noticias.html', {'noticias': noticias})
 
-@login_required
 def crear_noticia(request):
     if request.method == 'POST':
-        form = NoticiaForm(request.POST, request.FILES)
+        form = NoticiaForm(request.POST, request.FILES)  # 👈 importante incluir request.FILES
         if form.is_valid():
             noticia = form.save(commit=False)
-            noticia.autor = request.user
+            noticia.autor = request.user  # si usas usuario logueado
             noticia.save()
             return redirect('lista_noticias')
     else:
         form = NoticiaForm()
+    
     return render(request, 'noticias/crear.html', {'form': form})
